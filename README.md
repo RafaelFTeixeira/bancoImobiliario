@@ -38,7 +38,7 @@ comportamento serão explicados mais à frente.
 Um jogador que fica com saldo negativo perde o jogo, e não joga mais. 
 Perde suas propriedades e portanto podem ser compradas por qualquer outro jogador.
 
-SeuPrimeiroMilhao termina quando restar somente um jogador com saldo positivo, a
+Termina quando restar somente um jogador com saldo positivo, a
 qualquer momento da partida. Esse jogador é declarado o vencedor.
 
 Desejamos rodar uma simulação para decidir qual a melhor estratégia.
