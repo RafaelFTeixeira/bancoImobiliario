@@ -3,17 +3,25 @@ from jogador import Jogador
 
 class JogadorTest(unittest.TestCase):
 
+    def setUp(self):
+      self.nomeDoJogador = "Teixeiract"
+      self.jogador = jogador = Jogador(self.nomeDoJogador)
+
     def test_deve_criar_um_jogador_com_nome(self):
-      nomeDoJogador = "Teixeiract"
-
-      jogador = Jogador(nomeDoJogador)
-
-      assert nomeDoJogador == jogador.nome
+      self.assertEqual(self.nomeDoJogador, self.jogador.nome)
 
     def test_deve_criar_um_jogador_com_saldo_de_300(self):
-        jogador = Jogador("Ferreira")
+        self.assertEqual(300, self.jogador.saldo)
 
-        assert 300 == jogador.saldo
+    def test_deve_iniciar_com_a_posicao_zero(self):
+      self.assertEqual(0, self.jogador.posicao)
+  
+    def test_deve_pular_casa(self):
+      posicaoEsperada = 5
+
+      self.jogador.pularPosicao(posicaoEsperada)
+
+      self.assertEqual(posicaoEsperada, self.jogador.posicao)
 
 if __name__ == "__main__":
   unittest.main()

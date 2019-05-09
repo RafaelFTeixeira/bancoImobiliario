@@ -5,3 +5,6 @@ class Propriedade:
         self.valorDaVenda = valorDaVenda
         self.valorDoAluguel = valorDoAluguel
         self.proprietario = None
+
+    def estaVendida(self):
+        return None != self.proprietario

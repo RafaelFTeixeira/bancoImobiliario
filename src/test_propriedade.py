@@ -24,3 +24,6 @@ class PropriedadeTest(unittest.TestCase):
         self.propriedade.proprietario = Impulsivo("Jogador1")
 
         self.assertIsNotNone(self.propriedade.proprietario)
+
+if __name__ == "__main__":
+  unittest.main()
