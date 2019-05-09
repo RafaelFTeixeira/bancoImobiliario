@@ -8,3 +8,6 @@ class Propriedade:
 
     def estaVendida(self):
         return None != self.proprietario
+
+    def pertence(self, jogador):
+        return self.estaVendida() and self.proprietario.nome == jogador.nome

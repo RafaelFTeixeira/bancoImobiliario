@@ -27,9 +27,22 @@ class Tabuleiro:
                 propriedade = self.propriedades[vezDoJogador.posicao]
                 if self.temQuePagarAluguel(propriedade, vezDoJogador):
                     pagarAluguel()
+                elif vezDoJogador.deveComprar(propriedade):
+                    self.comprarPropriedade(propriedade, vezDoJogador)
+                if vezDoJogador.estaFalido():
+                    self.removerAsPropriedades(vezDoJogador)
+
+    def removerAsPropriedades(self, vezDoJogador):
+        propriedadesDoJogador = filter(lambda propriedade: propriedade.pertence(vezDoJogador), self.propriedades)
+        for propriedade in propriedadesDoJogador:
+            propriedade.proprietario = None
 
     def temQuePagarAluguel(self, propriedade, vezDoJogador):
         return propriedade.estaVendida() and propriedade.proprietario != vezDoJogador
+    
+    def comprarPropriedade(self, propriedade, vezDoJogador):
+        propriedade.proprietario = vezDoJogador
+        vezDoJogador.saldo -= propriedade.valorDaVenda
 
     def __rodarDado():
         return random.randint(1, 6)

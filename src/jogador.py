@@ -10,3 +10,6 @@ class Jogador:
     
     def pularPosicao(self, posicao):
         self.posicao += posicao
+
+    def estaFalido(self):
+        return not self.temSaldoPositivo()

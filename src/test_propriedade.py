@@ -24,6 +24,21 @@ class PropriedadeTest(unittest.TestCase):
         self.propriedade.proprietario = Impulsivo("Jogador1")
 
         self.assertIsNotNone(self.propriedade.proprietario)
+    
+    def test_deve_validar_se_a_propriedade_pertence_ao_um_jogador(self):
+        jogador = Impulsivo('Azul')
+        self.propriedade.proprietario = jogador
+
+        pertence = self.propriedade.pertence(jogador)
+
+        self.assertTrue(pertence)
+
+    def test_deve_validar_se_a_propriedade_nao_pertence_ao_um_jogador(self):
+        jogador = Impulsivo('Azul')
+
+        pertence = self.propriedade.pertence(jogador)
+
+        self.assertFalse(pertence)
 
 if __name__ == "__main__":
   unittest.main()

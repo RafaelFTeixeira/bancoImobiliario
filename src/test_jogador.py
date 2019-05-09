@@ -23,5 +23,10 @@ class JogadorTest(unittest.TestCase):
 
       self.assertEqual(posicaoEsperada, self.jogador.posicao)
 
+    def test_deve_validar_se_esta_falido(self):
+      self.jogador.saldo = 0
+
+      self.assertTrue(self.jogador.estaFalido())
+
 if __name__ == "__main__":
   unittest.main()

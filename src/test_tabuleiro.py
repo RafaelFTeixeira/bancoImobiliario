@@ -72,6 +72,25 @@ class TabuleiroTest(unittest.TestCase):
 
         self.assertFalse(temQuePagarAluguel)
 
+    def test_deve_comprar_propriedade(self):
+        jogador = Impulsivo('Azul')
+        propriedade = self.tabuleiro.propriedades[0]
+        saldoEsperado = jogador.saldo - propriedade.valorDaVenda
+
+        self.tabuleiro.comprarPropriedade(propriedade, jogador)
+
+        self.assertEqual(jogador, propriedade.proprietario)
+        self.assertEqual(saldoEsperado, jogador.saldo)
+
+    def test_deve_remover_as_propriedades_do_jogador(self):
+        jogador = Impulsivo('Azul')
+        propriedadesDoJogador = self.tabuleiro.propriedades[0]
+        propriedadesDoJogador.proprietario = jogador
+
+        self.tabuleiro.removerAsPropriedades(jogador)
+
+        self.assertIsNone(propriedadesDoJogador.proprietario)
+
 
 if __name__ == "__main__":
   unittest.main()
