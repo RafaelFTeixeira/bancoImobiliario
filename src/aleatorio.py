@@ -5,7 +5,7 @@ class Aleatorio(Jogador):
     def __init__(self, nome):
         return super().__init__(nome)
     
-    def deveComprar(self):
+    def deveComprar(self, propriedade):
         return self.temSaldoPositivo() and self.temProbabilidade()
 
     def temProbabilidade(self):

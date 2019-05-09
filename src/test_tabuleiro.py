@@ -90,6 +90,19 @@ class TabuleiroTest(unittest.TestCase):
         self.tabuleiro.removerAsPropriedades(jogador)
 
         self.assertIsNone(propriedadesDoJogador.proprietario)
+    
+    def test_deve_vencer_um_jogador(self):
+        self.tabuleiro.iniciar()
+
+        self.assertIsNotNone(self.tabuleiro.vencedor)
+    
+    def test_obter_jogador_com_maior_saldo(self):
+        jogadorEsperado = self.tabuleiro.jogadores[0]
+        jogadorEsperado.saldo = 500
+
+        jogadorEncontrado = self.tabuleiro.obterJogadorComMaiorSaldo()
+
+        self.assertEqual(jogadorEsperado, jogadorEncontrado)
 
 
 if __name__ == "__main__":

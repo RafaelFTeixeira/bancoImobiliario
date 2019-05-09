@@ -8,6 +8,7 @@ from propriedade import Propriedade
 class Tabuleiro:
 
     def __init__(self):
+        self.vencedor = None
         self.propriedades = [
             Propriedade('Morumbi', 300, 100),
             Propriedade('Santo Amaro', 200, 50)
@@ -20,17 +21,22 @@ class Tabuleiro:
         ]
 
     def iniciar(self):
-        for rodada in range(0, 250):
-            for vezDoJogador in jogadores:
-                posicao = __rodarDado()
-                vezDoJogador.pularPosicao(posicao)
+        for rodada in range(0, 1000):
+            for vezDoJogador in filter(lambda jogador: not jogador.estaFalido(), self.jogadores):
+                posicao = self.__rodarDado()
+                vezDoJogador.pularPosicao(posicao, len(self.propriedades))
                 propriedade = self.propriedades[vezDoJogador.posicao]
                 if self.temQuePagarAluguel(propriedade, vezDoJogador):
-                    pagarAluguel()
+                    self.pagarAluguel(propriedade, vezDoJogador)
                 elif vezDoJogador.deveComprar(propriedade):
                     self.comprarPropriedade(propriedade, vezDoJogador)
                 if vezDoJogador.estaFalido():
                     self.removerAsPropriedades(vezDoJogador)
+        
+        self.vencedor = self.obterJogadorComMaiorSaldo()
+
+    def obterJogadorComMaiorSaldo(self):
+        return max(self.jogadores, key=lambda jogador: jogador.saldo)
 
     def removerAsPropriedades(self, vezDoJogador):
         propriedadesDoJogador = filter(lambda propriedade: propriedade.pertence(vezDoJogador), self.propriedades)
@@ -44,7 +50,7 @@ class Tabuleiro:
         propriedade.proprietario = vezDoJogador
         vezDoJogador.saldo -= propriedade.valorDaVenda
 
-    def __rodarDado():
+    def __rodarDado(self):
         return random.randint(1, 6)
     
     def pagarAluguel(self, propriedade, vezDoJogador):

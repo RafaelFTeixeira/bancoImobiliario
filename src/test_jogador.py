@@ -17,9 +17,9 @@ class JogadorTest(unittest.TestCase):
       self.assertEqual(0, self.jogador.posicao)
   
     def test_deve_pular_casa(self):
-      posicaoEsperada = 5
+      posicaoEsperada = 0
 
-      self.jogador.pularPosicao(posicaoEsperada)
+      self.jogador.pularPosicao(6, 2)
 
       self.assertEqual(posicaoEsperada, self.jogador.posicao)
 
