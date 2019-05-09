@@ -1,5 +1,6 @@
 # Objetivo
 Aprender Python
+Rodar os testes: `python3 -m unittest`
 
 ## O Desafio
 Considere o seguinte jogo hipotético muito semelhante a Banco Imobiliário, 
